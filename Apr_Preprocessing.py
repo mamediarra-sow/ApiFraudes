@@ -18,6 +18,7 @@ class AP_preprocessing():
         dataset['montant_total'] = np.where(dataset['montant_total']<70000.0,'faible',np.where(dataset['montant_total']<232300.0,'moyen',
                                                             np.where(dataset['montant_total']<2000000.0,'elevé','très elevé')))
         return dataset
+    #Preprocessing pour l'algorithme apriori
     def apr_preprocessing(self, transaction):
         transaction[['date_trx','heure_trx']] = transaction.date.str.split(" ",expand=True)
         transaction['montant'] = pd.to_numeric(transaction['montant'])
